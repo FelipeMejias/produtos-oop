@@ -7,7 +7,6 @@ export class Item {
 export class TaxItem extends Item {
     constructor(description,price){
         super(description,price)
-        this.tax=tax
     }
     calculateTax(tax=0){
         return this.price*tax

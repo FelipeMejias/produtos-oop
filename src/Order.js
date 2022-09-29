@@ -1,3 +1,5 @@
+import { Beer, Cigar, Eletronics } from "./Item"
+
 export default class Order {
     constructor(){
         this.items=[]
@@ -13,13 +15,9 @@ export default class Order {
     getTaxes(){
         let sum=0
         for(let item of this.items){
-            const {category,price}=item
-            let tax=null
-            if(category==='Beer') tax=0.2
-            if(category==='Cigar') tax=0.25
-            if(category==='Eletronics') tax=0.3
-            if(category==='Water') tax=0
-            sum+=price*tax
+            if(item instanceof Beer) sum+=item.getTax(0.2)
+            if(item instanceof Cigar) sum+=item.getTax(0.25)
+            if(item instanceof Eletronics) sum+=item.getTax(0.3)
         }
         return sum
     }
